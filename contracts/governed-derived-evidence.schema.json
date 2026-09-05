@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://tenantsage.org/contracts/governed-derived-evidence.schema.json",
+  "title": "GovernedDerivedEvidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "logical_chunk_id",
+    "chunk_version_id",
+    "source_id",
+    "source_version_id",
+    "tenant_id",
+    "scope_id",
+    "data_classification",
+    "content",
+    "content_hash",
+    "governance_state_hash",
+    "derivation_hash",
+    "chunk_index",
+    "parent_proof_ref"
+  ],
+  "properties": {
+    "contract_version": { "type": "string", "const": "1.0" },
+    "logical_chunk_id": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
+    "chunk_version_id": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
+    "source_id": { "type": "string", "minLength": 1 },
+    "source_version_id": { "type": "string", "minLength": 1 },
+    "tenant_id": { "type": "string", "minLength": 1 },
+    "organisation_id": { "type": ["string", "null"] },
+    "scope_id": { "type": "string", "minLength": 1 },
+    "data_classification": { "type": "string", "minLength": 1 },
+    "visibility": { "type": ["string", "null"] },
+    "content": { "type": "string", "minLength": 1 },
+    "content_hash": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
+    "governance_state_hash": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
+    "derivation_hash": { "type": "string", "pattern": "^[a-fA-F0-9]{64}$" },
+    "chunk_index": { "type": "integer", "minimum": 0 },
+    "parent_proof_ref": { "type": "string", "minLength": 1 },
+    "embedding": {
+      "type": ["array", "null"],
+      "items": { "type": "number" }
+    },
+    "embedding_model": { "type": ["string", "null"] }
+  }
+}
